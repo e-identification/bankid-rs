@@ -1,8 +1,8 @@
-use bankid::client::BankID;
-use bankid::config::ConfigBuilder;
-use bankid::config::Pkcs12;
-use bankid::model::{CancelPayload, CollectPayload};
-use bankid::model::SignPayloadBuilder;
+use bankid::{
+    client::BankID,
+    config::{ConfigBuilder, Pkcs12},
+    model::{CancelPayload, CollectPayload, SignPayloadBuilder},
+};
 
 #[tokio::main]
 async fn main() {
@@ -16,8 +16,8 @@ async fn main() {
         .unwrap();
 
     let sign = bank_id.sign(payload).await.unwrap();
-    let collect = bank_id.collect(CollectPayload { order_ref: sign.clone().order_ref }).await.unwrap();
-    let cancel = bank_id.cancel(CancelPayload { order_ref: sign.clone().order_ref }).await.unwrap();
+    let collect = bank_id.collect(CollectPayload {order_ref: sign.clone().order_ref,}).await.unwrap();
+    let cancel = bank_id.cancel(CancelPayload {order_ref: sign.clone().order_ref,}).await.unwrap();
 
     println!("{:#?}", sign);
     println!("{:#?}", collect);

@@ -1,8 +1,8 @@
-use bankid::model::{CollectPayload, CancelPayload};
-use bankid::model::AuthenticatePayloadBuilder;
-use bankid::client::BankID;
-use bankid::config::Pkcs12;
-use bankid::config::ConfigBuilder;
+use bankid::{
+    client::BankID,
+    config::{ConfigBuilder, Pkcs12},
+    model::{AuthenticatePayloadBuilder, CancelPayload, CollectPayload},
+};
 
 #[tokio::main]
 async fn main() {
@@ -29,10 +29,7 @@ fn client() -> BankID {
         password: "qwerty123".to_string(),
     };
 
-    let config = ConfigBuilder::default()
-        .pkcs12(pkcs12)
-        .build()
-        .unwrap();
+    let config = ConfigBuilder::default().pkcs12(pkcs12).build().unwrap();
 
     BankID::new(config)
 }
