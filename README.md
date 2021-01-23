@@ -32,7 +32,7 @@ $ cargo build
 `bankid-rs` is also available as the `blocking` interface
 
 ```sh
-$ cargo build --features async
+$ cargo build --features sync
 ```
 
 ## License
