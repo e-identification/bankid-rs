@@ -22,7 +22,7 @@ thiserror = "1.0.20"
 url = "2.1.1"
 pem = "0.8.1"
 openssl = { version = "0.10.30", optional = true }
-webpki-roots =  "0.20"
+webpki-roots =  "0.21"
 dyn-clone = "1.0.4"
 
 [dev-dependencies]
