@@ -20,8 +20,6 @@ impl Identity {
     }
 
     pub fn from_vec(der: Vec<u8>, password: &str) -> Result<reqwest::Identity> {
-        // let buf: Vec<u8> = der.into();
-
         match reqwest::Identity::from_pkcs12_der(&der, password) {
             Ok(identify) => Ok(identify),
             Err(error) => Err(Error::Pkcs12Error { source: error }),

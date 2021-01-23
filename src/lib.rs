@@ -24,7 +24,7 @@
 //! ```toml
 //! [dependencies]
 //! bankid-rs = {
-//!     version = "...",
+//!     version = "0.1.0",
 //! }
 //! ```
 //!
@@ -35,7 +35,7 @@
 //!
 //! ## Examples
 //!
-//! There are some available examples [(https://)]
+//! There are some available examples [(https://github.com/NicklasWallgren/bankid-rs/examples)]
 //!
 //!
 

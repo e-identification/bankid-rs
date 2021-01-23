@@ -3,6 +3,12 @@ name = "bankid"
 version = "0.1.0"
 authors = ["Nicklas Wallgren <nicklas.wallgren@gmail.com>"]
 edition = "2018"
+license = "MIT"
+readme = "README.md"
+description = "BankID API SDK"
+homepage = "https://github.com/NicklasWallgren/bankid-rs"
+repository = "https://github.com/NicklasWallgren/bankid-rs"
+keywords = ["bankid","api", "sdk"]
 
 [dependencies]
 async-trait = { version = "0.1.40", optional = true }
@@ -33,3 +39,11 @@ sync = ["__sync", "reqwest/native-tls"]
 # Internal features for checking async or sync compilation
 __async = ["async-trait"]
 __sync = ["maybe-async/is_sync"]
+
+[[example]]
+name = "authenticate"
+path = "examples/authenticate.rs"
+
+[[example]]
+name = "sign"
+path = "examples/sign.rs"
