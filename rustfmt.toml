@@ -5,7 +5,8 @@ reorder_impl_items = true
 fn_single_line = false
 blank_lines_upper_bound = 2
 ignore = [
+    "examples/"
 ]
 comment_width = 120
 max_width = 120
-inline_attribute_width = 80
+inline_attribute_width = 120

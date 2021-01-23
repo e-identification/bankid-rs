@@ -15,8 +15,13 @@ async fn main() {
         .unwrap();
 
     let authenticate = &bank_id.authenticate(payload).await.unwrap();
-    let collect = bank_id.collect(CollectPayload { order_ref: authenticate.clone().order_ref }).await.unwrap();
-    let cancel = bank_id.cancel(CancelPayload { order_ref: authenticate.clone().order_ref }).await.unwrap();
+    let collect = bank_id.collect(CollectPayload { order_ref: authenticate.clone().order_ref })
+        .await
+        .unwrap();
+
+    let cancel = bank_id.cancel(CancelPayload { order_ref: authenticate.clone().order_ref })
+        .await
+        .unwrap();
 
     println!("{:#?}", authenticate);
     println!("{:#?}", collect);

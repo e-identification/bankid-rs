@@ -1,5 +1,5 @@
 on: [push]
-name: rustfmt
+name: test
 jobs:
   test:
     name: Test Suite

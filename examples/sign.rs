@@ -16,8 +16,13 @@ async fn main() {
         .unwrap();
 
     let sign = bank_id.sign(payload).await.unwrap();
-    let collect = bank_id.collect(CollectPayload {order_ref: sign.clone().order_ref,}).await.unwrap();
-    let cancel = bank_id.cancel(CancelPayload {order_ref: sign.clone().order_ref,}).await.unwrap();
+    let collect = bank_id .collect(CollectPayload {order_ref: sign.clone().order_ref,})
+        .await
+        .unwrap();
+
+    let cancel = bank_id.cancel(CancelPayload {order_ref: sign.clone().order_ref,})
+        .await
+        .unwrap();
 
     println!("{:#?}", sign);
     println!("{:#?}", collect);
