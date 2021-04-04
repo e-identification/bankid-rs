@@ -1,15 +1,16 @@
-use futures::TryFutureExt;
 use maybe_async::maybe_async;
 use rand::Rng;
+
+#[cfg(feature = "__sync")]
+pub use test as maybe_async_test;
+#[cfg(feature = "__async")]
+pub use tokio::test as maybe_async_test;
 
 use bankid::{
     client::BankID,
     config::{ConfigBuilder, Pkcs12},
-    model::{AuthenticatePayloadBuilder, CollectPayload},
+    model::{AuthenticatePayloadBuilder, CollectPayload, CancelPayload},
 };
-
-#[cfg(feature = "__sync")] pub use test as maybe_async_test;
-#[cfg(feature = "__async")] pub use tokio::test as maybe_async_test;
 
 #[maybe_async]
 #[maybe_async_test]
@@ -42,10 +43,7 @@ async fn test_collect() {
 
     let authenticate = bank_id.authenticate(payload).await.unwrap();
 
-    bank_id
-        .collect(CollectPayload {
-            order_ref: authenticate.order_ref,
-        })
+    bank_id.collect(CollectPayload { order_ref: authenticate.order_ref })
         .await
         .unwrap();
 }
@@ -62,6 +60,10 @@ async fn test_cancel() {
         .unwrap();
 
     let authenticate = bank_id.authenticate(payload).await.unwrap();
+
+    bank_id.cancel(CancelPayload { order_ref: authenticate.order_ref })
+        .await
+        .unwrap();
 }
 
 fn client() -> BankID {

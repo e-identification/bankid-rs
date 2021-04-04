@@ -44,4 +44,4 @@ pub mod config;
 pub mod error;
 mod http;
 pub mod model;
-pub mod tls;
+mod tls;

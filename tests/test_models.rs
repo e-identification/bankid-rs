@@ -1,5 +1,4 @@
 use bankid::model::*;
-use std::time::Duration;
 
 #[test]
 fn test_authenticate() {
