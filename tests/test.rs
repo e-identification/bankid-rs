@@ -67,7 +67,7 @@ async fn test_cancel() {
 }
 
 fn client() -> BankID {
-    let pkcs12 = Pkcs12::DER {
+    let pkcs12 = Pkcs12::Der {
         der: CA_TEST.to_vec(),
         password: "qwerty123".to_string(),
     };
