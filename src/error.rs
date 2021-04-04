@@ -38,13 +38,13 @@ pub enum Error {
     Unauthorized,
 
     #[error("api error: {0}")]
-    API(#[from] ApiError),
+    Api(#[from] ApiError),
 
     #[error("json parse error: {0}")]
-    ParseJSON(#[from] serde_json::Error),
+    ParseJson(#[from] serde_json::Error),
 
     #[error("url parse error: {0}")]
-    ParseURL(#[from] url::ParseError),
+    ParseUrl(#[from] url::ParseError),
 
     #[error("input/output error: {0}")]
     IO(#[from] std::io::Error),
