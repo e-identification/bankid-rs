@@ -3,6 +3,7 @@ use bankid::{
     config::{ConfigBuilder, Pkcs12},
     model::{CancelPayload, CollectPayload, SignPayloadBuilder},
 };
+use bankid::config::CA_TEST;
 
 #[tokio::main]
 async fn main() {
@@ -16,11 +17,11 @@ async fn main() {
         .unwrap();
 
     let sign = bank_id.sign(payload).await.unwrap();
-    let collect = bank_id .collect(CollectPayload {order_ref: sign.clone().order_ref,})
+    let collect = bank_id.collect(CollectPayload { order_ref: sign.clone().order_ref })
         .await
         .unwrap();
 
-    let cancel = bank_id.cancel(CancelPayload {order_ref: sign.clone().order_ref,})
+    let cancel = bank_id.cancel(CancelPayload { order_ref: sign.clone().order_ref })
         .await
         .unwrap();
 
@@ -30,14 +31,19 @@ async fn main() {
 }
 
 fn client() -> BankID {
-    let pkcs12 = Pkcs12::DER {
-        der: CA_TEST.to_vec(),
+    let pkcs12 = Pkcs12::Der {
+        der: P12_TEST.to_vec(),
         password: "qwerty123".to_string(),
     };
 
-    let config = ConfigBuilder::default().pkcs12(pkcs12).build().unwrap();
+    let config = ConfigBuilder::default()
+        .pkcs12(pkcs12)
+        .url("https://appapi2.test.bankid.com/rp/v5.1".to_string())
+        .ca(CA_TEST.to_string())
+        .build()
+        .unwrap();
 
     BankID::new(config)
 }
 
-const CA_TEST: &'static [u8] = include_bytes!("../resources/testcert.p12");
+const P12_TEST: &'static [u8] = include_bytes!("../resources/testcert.p12");

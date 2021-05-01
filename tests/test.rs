@@ -1,16 +1,17 @@
-use maybe_async::maybe_async;
-use rand::Rng;
-
 #[cfg(feature = "__sync")]
 pub use test as maybe_async_test;
+
+use maybe_async::maybe_async;
+use rand::Rng;
 #[cfg(feature = "__async")]
 pub use tokio::test as maybe_async_test;
 
 use bankid::{
     client::BankID,
     config::{ConfigBuilder, Pkcs12},
-    model::{AuthenticatePayloadBuilder, CollectPayload, CancelPayload},
+    model::{AuthenticatePayloadBuilder, CancelPayload, CollectPayload},
 };
+use bankid::config::{CA_TEST};
 
 #[maybe_async]
 #[maybe_async_test]
@@ -67,12 +68,16 @@ async fn test_cancel() {
 }
 
 fn client() -> BankID {
-    let pkcs12 = Pkcs12::DER {
-        der: CA_TEST.to_vec(),
+    let pkcs12 = Pkcs12::Der {
+        der: P12_TEST.to_vec(),
         password: "qwerty123".to_string(),
     };
 
-    let config = ConfigBuilder::default().pkcs12(pkcs12).build().unwrap();
+    let config = ConfigBuilder::default()
+        .pkcs12(pkcs12)
+        .url("https://appapi2.test.bankid.com/rp/v5.1".to_string())
+        .ca(CA_TEST.to_string())
+        .build().unwrap();
 
     BankID::new(config)
 }
@@ -89,4 +94,4 @@ fn personal_number() -> String {
     )
 }
 
-const CA_TEST: &'static [u8] = include_bytes!("../resources/testcert.p12");
+const P12_TEST: &'static [u8] = include_bytes!("../resources/testcert.p12");

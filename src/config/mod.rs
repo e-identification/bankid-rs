@@ -13,8 +13,8 @@ use crate::{
 
 #[derive(Debug, Clone)]
 pub enum Pkcs12 {
-    FILE { path: String, password: String },
-    DER { der: Vec<u8>, password: String },
+    File { path: String, password: String },
+    Der { der: Vec<u8>, password: String },
 }
 
 impl TryFrom<Pkcs12> for reqwest::Identity {
@@ -22,8 +22,8 @@ impl TryFrom<Pkcs12> for reqwest::Identity {
 
     fn try_from(pkcs12: Pkcs12) -> Result<Self, Self::Error> {
         match pkcs12 {
-            Pkcs12::FILE { path, password } => Ok(Identity::from_pkcs12_file(path.as_str(), password.as_str())?),
-            Pkcs12::DER { der, password } => Ok(Identity::from_vec(der, password.as_str())?),
+            Pkcs12::File { path, password } => Ok(Identity::from_pkcs12_file(path.as_str(), password.as_str())?),
+            Pkcs12::Der { der, password } => Ok(Identity::from_vec(der, password.as_str())?),
         }
     }
 }
@@ -76,9 +76,9 @@ impl TryFrom<Config> for reqwest::blocking::ClientBuilder {
 #[allow(dead_code)]
 pub const API_URL_TEST: &str = "https://appapi2.test.bankid.com/rp/v5.1";
 #[allow(dead_code)]
-pub const API_URL_PROD: &str = "https://appapi2.test.bankid.com/rp/v5.1";
+pub const API_URL_PROD: &str = "https://appapi2.bankid.com/rp/v5.1";
 
 #[allow(dead_code)]
 pub const CA_TEST: &str = include_str!("../../resources/test.ca");
 #[allow(dead_code)]
-pub const CA_PROD: &str = include_str!("../../resources/test.ca");
+pub const CA_PROD: &str = include_str!("../../resources/production.ca");

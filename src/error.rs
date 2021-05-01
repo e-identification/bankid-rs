@@ -38,7 +38,7 @@ pub enum Error {
     Unauthorized,
 
     #[error("api error: {0}")]
-    API(#[from] ApiError),
+    Api(#[from] ApiError),
 
     #[error("json parse error: {0}")]
     ParseJSON(#[from] serde_json::Error),
