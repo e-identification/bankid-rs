@@ -1,7 +1,7 @@
 [![Continuous Integration](https://github.com/nicklaswallgren/bankid-rs/workflows/test/badge.svg)](https://github.com/nicklaswallgren/bankid-rs/actions)
 [![License](https://img.shields.io/github/license/nicklaswallgren/bankid-rs)](https://github.com/nicklaswallgren/bankid-rs/blob/master/LICENSE)
-[![Crates.io](https://img.shields.io/crates/v/bankd-rs.svg)](https://crates.io/crates/bankid-rs)
-[![Docs](https://docs.rs/bankid-rs/badge.svg)](https://docs.rs/crate/bankid-rs/)
+[![Crates.io](https://img.shields.io/crates/v/bankid.svg)](https://crates.io/crates/bankid)
+[![Docs](https://docs.rs/bankid/badge.svg)](https://docs.rs/crate/bankid/)
 
 # BankID-rs
 
