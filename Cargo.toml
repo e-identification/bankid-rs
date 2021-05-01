@@ -13,7 +13,7 @@ keywords = ["bankid","api", "sdk"]
 [dependencies]
 async-trait = { version = "0.1.48", optional = true }
 base64 = "0.13.0"
-derive_builder = "0.10.0"
+derive_builder = "0.10.2"
 maybe-async = "0.2.4"
 reqwest = { version = "0.11.2", default-features = false, features = ["json", "socks", "blocking"], optional = true }
 serde = { version = "1.0.125", features = ["derive"] }
