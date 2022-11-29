@@ -11,7 +11,7 @@ repository = "https://github.com/NicklasWallgren/bankid-rs"
 keywords = ["bankid","api", "sdk"]
 
 [dependencies]
-async-trait = { version = "0.1.50", optional = true }
+async-trait = { version = "0.1.59", optional = true }
 base64 = "0.13.0"
 derive_builder = "0.10.2"
 maybe-async = "0.2.6"
