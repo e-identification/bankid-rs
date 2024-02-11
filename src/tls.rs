@@ -39,7 +39,7 @@ impl Certificate {
         file.read_to_end(&mut buf)
             .map_err(|source| Error::ReadError { source })?;
 
-        let pems = pem::parse_many(&buf);
+        let pems = pem::parse_many(&buf).map_err(|source| Error::PemError { source })?;
 
         pems.into_iter()
             .map(|pem| {
@@ -52,7 +52,7 @@ impl Certificate {
     #[allow(dead_code)]
     pub fn from_string(subject: &str) -> Result<Vec<reqwest::Certificate>> {
         let buf: Vec<u8> = subject.into();
-        let pems = pem::parse_many(&buf);
+        let pems = pem::parse_many(&buf).map_err(|source| Error::PemError { source })?;
 
         pems.into_iter()
             .map(|pem| {
