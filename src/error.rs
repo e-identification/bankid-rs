@@ -57,6 +57,9 @@ pub enum Error {
 
     #[error("Parsing Certificate error")]
     CertificateError { source: reqwest::Error },
+
+    #[error("Parsing PEM error")]
+    PemError { source: pem::PemError },
 }
 
 impl Error {
