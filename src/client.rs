@@ -22,7 +22,7 @@ use crate::{
 /// using [`Client::new`]
 #[derive(Builder, Clone, Debug)]
 pub struct BankID {
-    pub(in crate) client: Box<dyn http::HttpClient>,
+    pub(crate) client: Box<dyn http::HttpClient>,
 }
 
 impl BankID {
