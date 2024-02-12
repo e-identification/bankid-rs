@@ -9,7 +9,7 @@ use crate::{config::Config, error::Result};
 pub mod client;
 
 #[maybe_async]
-pub trait HttpClient: DynClone + std::fmt::Debug {
+pub trait HttpClient: DynClone + Send + Sync + std::fmt::Debug {
     fn try_from(config: Config) -> Result<Self>
     where
         Self: Sized;
