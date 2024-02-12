@@ -6,8 +6,8 @@ edition = "2018"
 license = "MIT"
 readme = "README.md"
 description = "BankID API SDK"
-homepage = "https://github.com/NicklasWallgren/bankid-rs"
-repository = "https://github.com/NicklasWallgren/bankid-rs"
+homepage = "https://github.com/e-identification/bankid-rs"
+repository = "https://github.com/e-identification/bankid-rs"
 keywords = ["bankid", "api", "sdk"]
 
 [dependencies]
