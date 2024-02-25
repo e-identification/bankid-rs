@@ -43,7 +43,7 @@ impl HttpClient for Client {
 
     #[inline]
     async fn post(&self, url: &str, payload: &Value) -> Result<String> {
-        let mut request = self.inner.request(Method::POST, &self.endpoint_url(url));
+        let mut request = self.inner.request(Method::POST, self.endpoint_url(url));
         request = request.json(payload);
 
         let response = request.send().await?;

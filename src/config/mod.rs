@@ -74,9 +74,9 @@ impl TryFrom<Config> for reqwest::blocking::ClientBuilder {
 }
 
 #[allow(dead_code)]
-pub const API_URL_TEST: &str = "https://appapi2.test.bankid.com/rp/v5.1";
+pub const API_URL_TEST: &str = "https://appapi2.test.bankid.com/rp/v6.0";
 #[allow(dead_code)]
-pub const API_URL_PROD: &str = "https://appapi2.bankid.com/rp/v5.1";
+pub const API_URL_PROD: &str = "https://appapi2.bankid.com/rp/v6.0";
 
 #[allow(dead_code)]
 pub const CA_TEST: &str = include_str!("../../resources/test.ca");

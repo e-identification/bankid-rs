@@ -5,7 +5,7 @@
 
 # BankID-rs
 
-BankID-rs is a BankID SDK. It includes support for all the v5.1 features.
+BankID-rs is a BankID SDK. It includes support for all the v6.0 features except /phone.
 
 To learn how to use BankID-rs, please refer to the [documentation](https://docs.rs/crate/bankid-rs/). There are some [examples that may be useful](./examples) as well.
 

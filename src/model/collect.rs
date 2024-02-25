@@ -1,6 +1,33 @@
 use derive_builder::Builder;
 use serde::{Deserialize, Serialize};
 
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+pub enum Status {
+    Pending,
+    Complete,
+    Failed,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+pub enum HintCode {
+    // Pending
+    OutstandingTransaction,
+    NoClient,
+    Started,
+    UserMRTD,
+    UserCallConfirm,
+    UserSign,
+    // Failed
+    ExpiredTransaction,
+    CertificateErr,
+    UserCancel,
+    Cancelled,
+    StartFailed,
+    UserDeclinedCall,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Builder)]
 #[serde(rename_all = "camelCase")]
 #[builder(setter(strip_option))]
@@ -13,9 +40,9 @@ pub struct Collect {
     /// pending - The order is being processed. hintCode describes the status of the order.
     /// failed - Something went wrong with the order. hintCode describes the error.
     /// complete - The order is complete. completionData holds user information.
-    pub status: String,
+    pub status: Status,
     /// Describes the status of the order.
-    pub hint_code: String,
+    pub hint_code: Option<HintCode>,
     /// Only present for complete orders.
     pub completion_data: Option<CompletionData>,
 }
@@ -31,41 +58,47 @@ pub struct CollectPayload {
 #[serde(rename_all = "camelCase")]
 pub struct CompletionData {
     /// Information related to the user.
-    user: User,
+    pub user: User,
     /// Information related to the device.
-    device: Device,
-    /// Information related to the user’s certificate.
-    cert: Cert,
+    pub device: Device,
+    /// The date the BankID was issued to the user.
+    pub bank_id_issue_date: String,
+    /// Information about extra verifications that were part of the transaction.
+    /// mrtd: Indicate if there was a check of the mrtd (machine readable travel document).
+    /// True if the mrtd check was performed and passed.
+    pub step_up: Option<bool>,
     /// The signature. Base64-encoded
-    signature: String,
-    ocsp_response: String,
+    pub signature: String,
+    pub ocsp_response: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Builder)]
 #[serde(rename_all = "camelCase")]
 pub struct User {
     /// The personal number
-    personal_number: String,
+    pub personal_number: String,
     /// The given name and surname of the user
-    name: String,
+    pub name: String,
     /// The given name of the user.
-    given_name: String,
+    pub given_name: String,
     /// The surname of the user.
-    surname: String,
+    pub surname: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Builder)]
 #[serde(rename_all = "camelCase")]
 pub struct Device {
     /// The IP address of the user agent as the BankID server discovers it
-    ip_address: String,
+    pub ip_address: String,
+    /// Unique hardware identifier for the user’s device.
+    pub uhi: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Builder)]
 #[serde(rename_all = "camelCase")]
 pub struct Cert {
     ///  Start of validity of the users BankID
-    not_before: String,
+    pub not_before: String,
     /// End of validity of the Users BankID
-    not_after: String,
+    pub not_after: String,
 }

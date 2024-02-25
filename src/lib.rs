@@ -1,6 +1,6 @@
 //! Crate for interacting with the BankID API.
 //!
-//! This crate includes tools for interacting with the BankID API v5.1.
+//! This crate includes tools for interacting with the BankID API v6.0.
 //!
 //! The crate support asynchronous paradigm with `async` and `await` by leveraging `reqwest` crate.
 //!
@@ -44,4 +44,5 @@ pub mod config;
 pub mod error;
 mod http;
 pub mod model;
+pub mod qr;
 mod tls;
