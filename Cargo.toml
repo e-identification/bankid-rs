@@ -27,7 +27,7 @@ url = "2.2.2"
 pem = "3.0.3"
 openssl = { version = "0.10.64", optional = true }
 webpki-roots = "0.26.1"
-dyn-clone = "1.0.4"
+dyn-clone = "1.0.17"
 ring = "0.17.7"
 hex = "0.4.3"
 
