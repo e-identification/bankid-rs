@@ -1,5 +1,5 @@
-[![Continuous Integration](https://github.com/nicklaswallgren/bankid-rs/workflows/test/badge.svg)](https://github.com/nicklaswallgren/bankid-rs/actions)
-[![License](https://img.shields.io/github/license/nicklaswallgren/bankid-rs)](https://github.com/nicklaswallgren/bankid-rs/blob/master/LICENSE)
+[![Continuous Integration](https://github.com/e-identification/bankid-rs/workflows/test/badge.svg)](https://github.com/e-identification/bankid-rs/actions)
+[![License](https://img.shields.io/github/license/e-identification/bankid-rs)](https://github.com/e-identification/bankid-rs/blob/master/LICENSE)
 [![Crates.io](https://img.shields.io/crates/v/bankid.svg)](https://crates.io/crates/bankid)
 [![Docs](https://docs.rs/bankid/badge.svg)](https://docs.rs/crate/bankid/)
 
