@@ -1,6 +1,6 @@
 [package]
 name = "bankid"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Nicklas Wallgren <nicklas.wallgren@gmail.com>", "Daniel L <https://github.com/dlq84>"]
 edition = "2018"
 license = "MIT"
