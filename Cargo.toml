@@ -12,7 +12,7 @@ keywords = ["bankid", "api", "sdk"]
 
 [dependencies]
 async-trait = { version = "0.1.80", optional = true }
-base64 = "0.22.0"
+base64 = "0.22.1"
 derive_builder = "0.20.0"
 maybe-async = "0.2.10"
 reqwest = { version = "0.12.4", default-features = false, features = [
